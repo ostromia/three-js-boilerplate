@@ -22,4 +22,17 @@ const material = new THREE.MeshBasicMaterial()
 const cube = new THREE.Mesh(geometry, material)
 scene.add(cube)
 
-renderer.render(scene, camera)
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener("resize", () => {
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    camera.aspect = windowWidth / windowHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(windowWidth, windowHeight);
+});
